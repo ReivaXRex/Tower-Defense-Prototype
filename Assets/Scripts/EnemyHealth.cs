@@ -24,7 +24,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHP <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

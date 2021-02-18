@@ -7,22 +7,53 @@ using TMPro;
 [ExecuteAlways]
 public class Coordinates : MonoBehaviour
 {
+    [SerializeField] Color defaultColor = Color.black;
+    [SerializeField] Color blockedColor = Color.white;
+
     TextMeshPro label;
     Vector2Int coordinates = new Vector2Int();
+    Waypoint waypoint;
 
     private void Awake()
     {
+        waypoint = GetComponentInParent<Waypoint>();
+       
         label = GetComponent<TextMeshPro>();
+        label.enabled = false;
+
         DisplayCoordinates();
     }
 
     void Update()
     {
-        if (!Application.isPlaying)
+        if (!Application.isPlaying) // Only Execute in Edit Mode
         {
             DisplayCoordinates();
             UpdateName();
-        }   
+        }
+
+        ColorCoordinates(waypoint.IsPlaceable);
+        ToggleLabels();
+    }
+
+    void ToggleLabels()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            label.enabled = !label.IsActive(); // Set the current enabled state of the label to the opposite of the current active state.
+        }
+    }
+
+    void ColorCoordinates(bool isPlaceable)
+    {
+        if (!isPlaceable)
+        {
+            label.color = blockedColor;
+        }
+        else
+        {
+            label.color = defaultColor;
+        }
     }
 
     void DisplayCoordinates()
