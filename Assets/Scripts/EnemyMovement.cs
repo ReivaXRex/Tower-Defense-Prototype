@@ -9,7 +9,14 @@ public class EnemyMovement : MonoBehaviour
     [Space]
     [SerializeField] [Range(0f, 5f)] float speed = 1f;
 
+    Enemy enemy;
+
     private void Start()
+    {
+        enemy = GetComponent<Enemy>();
+    }
+
+    private void OnEnable()
     {
         FindPath();
         ReturnToStart();
@@ -59,7 +66,9 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+        enemy.StealGold();
+        gameObject.SetActive(false);
+
     }
 }
 
