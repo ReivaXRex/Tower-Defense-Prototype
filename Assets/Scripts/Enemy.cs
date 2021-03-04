@@ -9,12 +9,14 @@ public class Enemy : MonoBehaviour
 
     Bank bank;
 
-    // Start is called before the first frame update
     void Start()
     {
         bank = FindObjectOfType<Bank>();
     }
 
+    /// <summary>
+    /// Add Gold to the Player's bank by the specified amount.
+    /// </summary>
     public void RewardGold()
     {
         if (bank == null) { return; }
@@ -22,6 +24,9 @@ public class Enemy : MonoBehaviour
         bank.Deposit(goldReward);
     }
 
+    /// <summary>
+    /// Remove Gold from the Player's bank by the specified amount.
+    /// </summary>
     public void StealGold()
     {
         if (bank == null) { return; }

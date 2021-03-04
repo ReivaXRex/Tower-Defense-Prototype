@@ -42,17 +42,27 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Reset the position of the Enemy.
+    /// </summary>
     void ReturnToStart()
     {
         transform.position = path[0].transform.position;
     }
 
+    /// <summary>
+    /// Steal Gold from the Player's bank and reset the Enemy once it's reached it's goal.
+    /// </summary>
     void FinishPath()
     {
         enemy.StealGold();
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Follow & Rotate towards a path from a start point to an end point.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator FollowPath()
     {
         foreach (Waypoint waypoint in path)

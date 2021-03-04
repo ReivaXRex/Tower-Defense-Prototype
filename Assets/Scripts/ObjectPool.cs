@@ -30,6 +30,9 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enable gameObjects within the  ObjectPool when called.
+    /// </summary>
     private void EnableObjectInPool()
     {
         for (int i = 0; i < pool.Length; i++)
@@ -42,6 +45,10 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enable Enemies within the ObjectPool determined by the Spawn Timer.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator SpawnEnemy()
     {
         while (true)

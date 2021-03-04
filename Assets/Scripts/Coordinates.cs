@@ -32,10 +32,13 @@ public class Coordinates : MonoBehaviour
             UpdateName();
         }
 
-        ColorCoordinates(waypoint.IsPlaceable);
+        ColorCoordinates(waypoint.IsPlaceable); 
         ToggleLabels();
     }
 
+    /// <summary>
+    /// Toggle the display of the Coordinates on the tiles.
+    /// </summary>
     void ToggleLabels()
     {
         if (Input.GetKeyDown(KeyCode.C))
@@ -44,6 +47,12 @@ public class Coordinates : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Color the coordinates by whether or not a Tower can be placed upon a tile.
+    /// </summary>
+    /// <param name="isPlaceable">
+    /// White if blocked (false), black if free (true).
+    /// </param>
     void ColorCoordinates(bool isPlaceable)
     {
         if (!isPlaceable)
@@ -56,14 +65,20 @@ public class Coordinates : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Display the tile's coordinates on it's surface.
+    /// </summary>
     void DisplayCoordinates()
     {
-        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / UnityEditor.EditorSnapSettings.move.x);
-        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / UnityEditor.EditorSnapSettings.move.z);
+        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / 10);
+        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / 10);
 
         label.text = coordinates.x + "," + coordinates.y;
     }
 
+    /// <summary>
+    /// Update the name of the gameObject to it's coordinates.
+    /// </summary>
     void UpdateName()
     {
         transform.parent.name = coordinates.ToString();

@@ -39,6 +39,10 @@ public class TargetLocator : MonoBehaviour
         target = closestTarget;
     }
 
+    /// <summary>
+    /// Aim the weapon portion of the Tower towards a specified target.
+    /// </summary>
+    /// <param name="aimTarget"></param>
     void AimWeapon(Transform aimTarget)
     {
         float targetDistance = Vector3.Distance(transform.position, target.position);
@@ -55,6 +59,10 @@ public class TargetLocator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Activate the Projectile when attacking.
+    /// </summary>
+    /// <param name="isActive"></param>
     void Attack(bool isActive)
     {
         var emissionModule = projectileParticles.GetComponent<ParticleSystem>().emission;

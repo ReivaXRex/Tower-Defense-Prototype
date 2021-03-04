@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
 
     void OnEnable()
     {
+        // Reset the health whenever reactivation occurs.
         currentHP = maxHP;
     }
 
@@ -25,6 +26,9 @@ public class EnemyHealth : MonoBehaviour
         ProcessHit();
     }
 
+    /// <summary>
+    /// Reduce Health by 1 per hit. Reward gold and deactivate upon 'death'.
+    /// </summary>
     void ProcessHit()
     {
         currentHP--;
